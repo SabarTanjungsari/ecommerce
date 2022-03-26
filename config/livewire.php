@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => 'public/assets/vendor',
+    'asset_url' => 'http://localhost/ecommerce/public',
 
     /*
     |--------------------------------------------------------------------------

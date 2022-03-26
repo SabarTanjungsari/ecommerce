@@ -49,10 +49,6 @@
                         </div>
                         <div class="topbar-menu right-menu">
                             <ul>
-                                <li class="menu-item"><a title="Register or Login" href="login.html">Login</a></li>
-                                <li class="menu-item"><a title="Register or Login"
-                                        href="register.html">Register</a>
-                                </li>
                                 <li class="menu-item lang-menu menu-item-has-children parent">
                                     <a title="English" href="#"><span class="img label-before"><img
                                                 src="{{ asset('public/assets/images/lang-en.png') }}"
@@ -92,6 +88,62 @@
                                         </li>
                                     </ul>
                                 </li>
+                                @if (Route::has('login'))
+                                    @auth
+                                        @if (Auth::user()->utype === 'ADM')
+                                            <li class="menu-item menu-item-has-children parent">
+                                                <a title="My Account" href="#">My Account({{ Auth::user()->name }})<i
+                                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                                <ul class="submenu curency">
+                                                    <li class="menu-item">
+                                                        <a title="Dashboard"
+                                                            href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <!-- Authentication -->
+                                                        <a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                                            Logout
+                                                        </a>
+                                                        <form id="frm-logout" action="{{ route('logout') }}"
+                                                            method="POST" style="display: none;">
+                                                            {{ csrf_field() }}
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        @else
+                                            <li class="menu-item menu-item-has-children parent">
+                                                <a title="My Account" href="#">My Account({{ Auth::user()->name }})<i
+                                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                                <ul class="submenu curency">
+                                                    <li class="menu-item">
+                                                        <a title="Dashboard"
+                                                            href="{{ route('user.dashboard') }}">Dashboard</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <!-- Authentication -->
+                                                        <a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                                            Logout
+                                                        </a>
+                                                        <form id="frm-logout" action="{{ route('logout') }}"
+                                                            method="POST" style="display: none;">
+                                                            {{ csrf_field() }}
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        @endif
+                                    @else
+                                        <li class="menu-item">
+                                            <a title="Register or Login" href="{{ route('login') }}">Login</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Register or Login" href="{{ route('register') }}">Register</a>
+                                        </li>
+                                    @endauth
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -191,8 +243,8 @@
                         <div class="container">
                             <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                                 <li class="menu-item home-icon">
-                                    <a href="index.html" class="link-term mercado-item-title"><i class="fa fa-home"
-                                            aria-hidden="true"></i></a>
+                                    <a href="index.html" class="link-term mercado-item-title"><i
+                                            class="fa fa-home" aria-hidden="true"></i></a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="about-us.html" class="link-term mercado-item-title">About Us</a>
