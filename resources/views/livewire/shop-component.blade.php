@@ -64,7 +64,8 @@
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
                                     <div class="product-thumnail">
-                                        <a href="detail.html" title="{{ $product->name }}">
+                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
+                                            title="{{ $product->name }}">
                                             <figure><img
                                                     src="{{ url('assets/images/products/') }}/{{ $product->image }}"
                                                     alt="{{ $product->name }}"></figure>
@@ -229,6 +230,7 @@
                     <h2 class="widget-title">Popular Products</h2>
                     <div class="widget-content">
                         <ul class="products">
+
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
