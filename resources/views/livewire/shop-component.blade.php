@@ -75,7 +75,9 @@
                                         <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
                                         <div class="wrap-price"><span
                                                 class="product-price">${{ $product->regular_price }}</span></div>
-                                        <a href="#" class="btn add-to-cart">Add To Cart</a>
+                                        <a href="#" class="btn add-to-cart"
+                                            wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Add
+                                            To Cart</a>
                                     </div>
                                 </div>
                             </li>
@@ -87,16 +89,9 @@
 
                 <div class="wrap-pagination-info">
                     {{ $products->links() }}
-                    {{-- <ul class="page-numbers">
-                        <li><span class="page-number-item current">1</span></li>
-                        <li><a class="page-number-item" href="#">2</a></li>
-                        <li><a class="page-number-item" href="#">3</a></li>
-                        <li><a class="page-number-item next-link" href="#">Next</a></li>
-                    </ul>
-                    <p class="result-count">Showing 1-8 of 12 result</p> --}}
                 </div>
             </div>
-            <!--end main products area-->
+
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget categories-widget">
@@ -236,7 +231,7 @@
                                     <div class="thumbnnail">
                                         <a href="detail.html"
                                             title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{ asset('assets/images/products/digital_01.jpg') }}"
+                                            <figure><img src="{{ asset('assets/images/products/digital_1.jpg') }}"
                                                     alt=""></figure>
                                         </a>
                                     </div>
@@ -304,7 +299,7 @@
                 </div><!-- brand widget-->
 
             </div>
-            <!--end sitebar-->
+
 
         </div>
         <!--end row-->
